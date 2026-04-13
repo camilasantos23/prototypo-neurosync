@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroSync Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="mobile-frame">
+       
+    
+        <div id="screen-paciente" class="screen active">
+            <h2 style="margin-bottom: 20px;">Minha Rotina</h2>
+            
+            <div class="task-card">
+                <img src="https://dabiatlante.com.br/wp-content/uploads/2022/11/importancia-de-escovar-os-dentes.jpg" class="task-img">
+                <div class="task-info">
+                    <h4>Escovar os dentes</h4>
+                    <div class="btns-row">
+                        <button class="btn-mark" onclick="toggleTask(this)">✓ Marcar</button>
+                        <button class="btn-stuck" onclick="openStuck('Escovar os dentes')">Tô Travado</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <img src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/03/cafe-da-manha.jpg?w=1200&h=1200&crop=1" class="task-img">
+                <div class="task-info">
+                    <h4>Tomar café da manhã</h4>
+                    <div class="btns-row">
+                        <button class="btn-mark" onclick="toggleTask(this)">✓ Marcar</button>
+                        <button class="btn-stuck" onclick="openStuck('Café da manhã')">Tô Travado</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sos-btn" onclick="triggerSOS()">SOS</div>
+        </div>
+
+        <div id="screen-cuidador" class="screen">
+            <h3>Rastreamento</h3>
+            <div class="map-placeholder">📍 Localização de João</div>
+            <div class="task-card" style="background: #e3f2fd;">
+                <div>
+                    <strong>Último SOS:</strong> Há 5 min<br>
+                    <small>Status: Em deslocamento</small>
+                </div>
+            </div>
+            <button style="width: 100%; background: var(--primary); color: white; padding: 15px;">Ligar para o Paciente</button>
+        </div>
+
+        <div id="screen-terapeuta" class="screen">
+            <h3>Relatório Semanal</h3>
+            <div class="chart-bar">
+                <div class="bar" style="height: 40%"></div>
+                <div class="bar" style="height: 70%"></div>
+                <div class="bar" style="height: 90%"></div>
+                <div class="bar" style="height: 50%"></div>
+                <div class="bar" style="height: 85%"></div>
+            </div>
+            <p style="margin-top: 15px; font-size: 14px;"><strong>Insight:</strong> João teve mais dificuldades na terça-feira (Tomar banho).</p>
+        </div>
+
+        <div id="modal-stuck">
+            <div class="modal-content">
+                <span style="float: right; cursor: pointer;" onclick="closeStuck()">✕</span>
+                <h3 id="stuck-title">Vamos devagar</h3>
+                <div class="progress-bar"><div class="progress-fill" id="step-progress"></div></div>
+                <div id="step-content" style="padding: 20px; background: #f9f9f9; border-radius: 15px;">
+                    <p id="step-text">Passo 1: Pegue sua escova de dentes.</p>
+                </div>
+                <button onclick="nextStep()" style="margin-top: 20px; width: 100%; background: var(--primary); color: white; padding: 12px;">Próximo Passo</button>
+            </div>
+        </div>
+         <div class="app-header">
+            <button class="mode-btn active" onclick="changeMode('paciente', this)">👤 Paciente</button>
+            <button class="mode-btn" onclick="changeMode('cuidador', this)">🏠 Cuidador</button>
+            <button class="mode-btn" onclick="changeMode('terapeuta', this)">🩺 Terapeuta</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
